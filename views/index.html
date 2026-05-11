@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dosya Dönüştürücü</title>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav-inner" aria-label="Üst menü">
+        <a href="/" class="logo">Convert<span>Flow</span></a>
+        <p class="tagline">PDF · TXT · DOCX · Görüntü</p>
+      </nav>
+    </header>
+
+    <main class="container">
+      <section class="hero card">
+        <h1>Dosyalarınızı güvenli ve hızlıca dönüştürün</h1>
+        <p class="lead">
+          Dosyanızı sürükleyip bırakın veya seçin, dönüşüm türünü belirleyin ve
+          <strong>Convert</strong> düğmesine basın. İşlem bitince dosyanızı
+          indirin.
+        </p>
+      </section>
+
+      <div id="toast-stack" class="toast-stack" aria-live="polite"></div>
+
+      <section class="card converter-card">
+        <div
+          id="dropzone"
+          class="dropzone"
+          tabindex="0"
+          role="button"
+          aria-label="Dosya yükleme alanı"
+        >
+          <input type="file" id="file-input" class="visually-hidden" />
+          <div class="dropzone-inner">
+            <span class="drop-icon" aria-hidden="true">⬆</span>
+            <p class="drop-title">Dosyayı buraya sürükleyin</p>
+            <p class="drop-sub">veya</p>
+            <button type="button" class="btn btn-outline" id="pick-file">
+              Dosya seç
+            </button>
+            <p id="file-name" class="file-name">Henüz dosya seçilmedi</p>
+            <p class="hint">Maksimum boyut: 10 MB · Sunucuya geçici olarak yüklenir</p>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <label for="conversion-type">Dönüşüm türü</label>
+          <select id="conversion-type" class="select">
+            <option value="">— Seçin —</option>
+            <option value="pdf-to-txt">PDF → TXT</option>
+            <option value="txt-to-pdf">TXT → PDF</option>
+            <option value="image-to-pdf">JPG / PNG → PDF</option>
+            <option value="pdf-to-docx">PDF → DOCX</option>
+            <option value="docx-to-pdf">DOCX → PDF</option>
+          </select>
+        </div>
+
+        <div class="actions">
+          <button type="button" class="btn" id="convert-btn" disabled>
+            <span class="btn-label">Convert</span>
+            <span class="btn-spinner" id="btn-spinner" hidden aria-hidden="true"></span>
+          </button>
+          <a class="btn btn-secondary" id="download-btn" href="#" hidden>İndir</a>
+        </div>
+      </section>
+
+      <section class="card tips">
+        <h2>Kısa notlar</h2>
+        <ul>
+          <li>Her dönüşüm için doğru uzantıyı yüklediğinizden emin olun (.pdf, .txt, .docx, .jpg, .png).</li>
+          <li>
+            PDF ↔ DOCX dönüşümlerinde sunucuda LibreOffice yoksa metin tabanlı
+            yedek yol kullanılır; biçimlendirme tam korunmayabilir.
+          </li>
+          <li>Heroku gibi platformlarda dosya sistemi geçicidir; indirdiğiniz dosyayı yerelde saklayın.</li>
+        </ul>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <p>© 2026 ConvertFlow · Node.js + Express</p>
+        <p class="footer-links">
+          <span>Vanilla JS arayüz</span>
+        </p>
+      </div>
+    </footer>
+
+    <script src="/js/script.js"></script>
+  </body>
+</html>
